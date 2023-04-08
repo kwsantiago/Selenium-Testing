@@ -20,12 +20,8 @@ class TestInvalidEmail(unittest.TestCase):
         self.browser.find_element(By.NAME, 'city').send_keys('New York')
         self.browser.find_element(By.NAME, 'state').send_keys('NY')
         self.browser.find_element(By.NAME, 'postalCode').send_keys('10001')
-
-        # Select a country from the dropdown
         country_select = Select(self.browser.find_element(By.NAME, 'country'))
         country_select.select_by_visible_text('UNITED STATES')
-
-        # Enter username and password
         self.browser.find_element(By.NAME, 'email').send_keys('JohnDoe2023')
         self.browser.find_element(By.NAME, 'password').send_keys('P@ssw0rd123')
         self.browser.find_element(By.NAME, 'confirmPassword').send_keys('P@ssw0rd123')

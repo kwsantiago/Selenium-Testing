@@ -13,7 +13,7 @@ class TestPasswordMismatch(unittest.TestCase):
     def test_password_mismatch(self):
         self.browser.get('https://demo.guru99.com/test/newtours/register.php')
 
-        # Fill out the form fields with valid data
+        # Step 1: Enter valid data in the form fields
         self.browser.find_element(By.NAME, 'firstName').send_keys('John')
         self.browser.find_element(By.NAME, 'lastName').send_keys('Doe')
         self.browser.find_element(By.NAME, 'phone').send_keys('123-456-7890')
@@ -28,11 +28,12 @@ class TestPasswordMismatch(unittest.TestCase):
         self.browser.find_element(By.NAME, 'password').send_keys('P@ssw0rd123')
         self.browser.find_element(By.NAME, 'confirmPassword').send_keys('P@ssw0rd456')
 
-        # Click the submit button
+        # Step 2: Click the submit button
         self.browser.find_element(By.NAME, 'submit').click()
 
-        # This is the error message the registration site gives when the passwords don't match
+        # This is the error message the registration site gives when the passwords don't match:
         # PAssword and con.password does not match
+
         # Wait for the error message to appear
         WebDriverWait(self.browser, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//span[text()='PAssword and con.password does not match']"))
@@ -42,7 +43,7 @@ class TestPasswordMismatch(unittest.TestCase):
         error_message = self.browser.find_element(By.XPATH, "//span[text()='PAssword and con.password does not match']")
         self.assertTrue(error_message.is_displayed())
 
-        # Verify that the user remains on the registration page
+        # Step 3: Verify that the user remains on the registration page
         current_url = self.browser.current_url
         self.assertEqual(current_url, 'https://demo.guru99.com/test/newtours/register.php')
 

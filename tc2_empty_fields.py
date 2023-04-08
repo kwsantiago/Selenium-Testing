@@ -19,6 +19,7 @@ class TestEmptyFields(unittest.TestCase):
         self.browser.find_element(By.NAME, 'submit').click()
 
         # Step 3: Verify if the browser redirects to the register_sucess.php page
+        # The code should not redirect to the register_scuess.php page and should error instead
         # This is a defect in the website and is covered in Defect 001
         WebDriverWait(self.browser, 10).until(
             EC.url_contains("register_sucess.php")
