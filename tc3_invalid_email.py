@@ -1,7 +1,6 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 
 class TestInvalidEmail(unittest.TestCase):
@@ -35,6 +34,7 @@ class TestInvalidEmail(unittest.TestCase):
         self.browser.find_element(By.NAME, 'submit').click()
 
         # Check if the browser is redirected to the success page
+        # The code should not redirect to the register_scuess.php page and should error instead
         # This is a defect in the website and is covered in Defect 002
         success_url = 'https://demo.guru99.com/test/newtours/register_sucess.php'
         self.assertEqual(self.browser.current_url, success_url, "The browser is not redirected to the success page.")
