@@ -23,7 +23,7 @@ class TestPasswordMismatch(unittest.TestCase):
         self.browser.find_element(By.NAME, 'state').send_keys('NY')
         self.browser.find_element(By.NAME, 'postalCode').send_keys('10001')
         country_select = Select(self.browser.find_element(By.NAME, 'country'))
-        country_select.select_by_visible_text('ALBANIA')
+        country_select.select_by_visible_text('UNITED STATES')
         self.browser.find_element(By.NAME, 'email').send_keys('JohnDoe2023')
         self.browser.find_element(By.NAME, 'password').send_keys('P@ssw0rd123')
         self.browser.find_element(By.NAME, 'confirmPassword').send_keys('P@ssw0rd456')
@@ -32,6 +32,7 @@ class TestPasswordMismatch(unittest.TestCase):
         self.browser.find_element(By.NAME, 'submit').click()
 
         # This is the error message the registration site gives when the passwords don't match
+        # PAssword and con.password does not match
         # Wait for the error message to appear
         WebDriverWait(self.browser, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//span[text()='PAssword and con.password does not match']"))

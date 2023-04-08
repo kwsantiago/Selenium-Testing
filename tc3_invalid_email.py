@@ -24,7 +24,7 @@ class TestInvalidEmail(unittest.TestCase):
 
         # Select a country from the dropdown
         country_select = Select(self.browser.find_element(By.NAME, 'country'))
-        country_select.select_by_visible_text('ALBANIA')
+        country_select.select_by_visible_text('UNITED STATES')
 
         # Enter username and password
         self.browser.find_element(By.NAME, 'email').send_keys('JohnDoe2023')
